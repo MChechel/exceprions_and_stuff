@@ -38,10 +38,13 @@ public class SetofMine {
 //
         Integer[] testArray =new Integer[]{1,5,9,8};
         System.out.println(Arrays.toString(sortedIntArray(testArray)));
-        Integer[] testArray2 =new Integer[1];
+        System.out.println(Arrays.toString(sortedIntArray2(testArray)));
+        Integer[] testArray2 =new Integer[22];
         System.out.println(Arrays.toString(sortedIntArray(testArray2)));
-
-        System.out.println(Arrays.toString(sortedIntArray(null)));
+        System.out.println(Arrays.toString(sortedIntArray2(testArray2)));
+//
+//        System.out.println(Arrays.toString(sortedIntArray(new Integer[]{15,30,null, null})));
+//        System.out.println(Arrays.toString(sortedIntArray2(testArray2)));
     }
 
     //tesk for sets:
@@ -55,16 +58,28 @@ public class SetofMine {
         for (Integer a:myArray){
             mySortedArray.add(a);
         }
-        System.out.println(mySortedArray);
+        //System.out.println(mySortedArray);
             return mySortedArray.toArray(output);
         }catch (IllegalArgumentException e){
             System.out.println("Your input is WRONG!");
             return null;
         }catch(NullPointerException e){
-            System.out.println("Your input is empty!");
+            System.out.println("Your input contains NULL arguments!!!");
             return null;
         }
 
     }
+    public static Integer[] sortedIntArray2(Integer[] myArray){
+            Integer[] output = new Integer[myArray.length];
+            Set<Integer> mySortedArray = new TreeSet<>();
+            for (Integer a:myArray){
+                if (a.equals(null)){
+                    throw new IllegalArgumentException();
+                }
+                mySortedArray.add(a);
+            }
+            //System.out.println(mySortedArray);
+            return mySortedArray.toArray(new Integer[]{});
+        }
+    }
 
-}
